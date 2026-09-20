@@ -9,7 +9,8 @@ Plain HTML, CSS and JavaScript. No build step, no framework, nothing to install.
 | File | What it is |
 | --- | --- |
 | `index.html` | Home: hero, mission, stats, subteams, season overview, partners |
-| `about.html` | How the team works, the five subteams, leadership, advisors, history |
+| `about.html` | How the team works, the subteams, aircraft by season, history |
+| `team.html` | Officers, subteam leads and faculty advisor with photos |
 | `competition.html` | What AIAA DBF is, 2026 figures, the season timeline, track record |
 | `events.html` | Meeting types, calendar links, what a season looks like |
 | `resources.html` | Software, shop trainings, Teams / Overleaf / GitHub |
@@ -28,7 +29,7 @@ Shared files live in `assets/`:
 
 ## Common edits
 
-**Update leadership.** Open `about.html` and `contact.html`, find the person's block, and change the name, role and email. To add a photo, drop a square JPEG in `assets/img/leads/` and replace the initials `div` with `<img src="assets/img/leads/name.jpg" alt="Name">`.
+**Update leadership.** Open `team.html`, `contact.html` and the team strip on `index.html`, find the person's block, and change the name, role and email. To add a photo, drop a square JPEG in `assets/img/leads/` and replace the initials `div` with `<img src="assets/img/leads/name.jpg" alt="Name">`.
 
 **Add a sponsor.** Put the logo in `assets/img/sponsors/` (SVG or transparent PNG, white or light logos look best on the dark background). Then add a link in the `logos` grid on both `index.html` and `sponsorship.html`. Give the top-tier partner the `logos__hi` class so it gets the wide highlighted card.
 
