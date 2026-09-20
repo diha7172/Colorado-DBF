@@ -47,14 +47,13 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-## Hosting: GitHub Pages at www.coloradodbf.org
+## Hosting: GitHub Pages at www.coloradodbf.com
 
-The site is hosted on GitHub Pages, straight from this repository, through the workflow in `.github/workflows/deploy.yml`. Every push to the default branch deploys it. Until the domain is connected it lives at https://diha7172.github.io/Colorado-DBF/.
+The site is hosted on GitHub Pages, straight from this repository, through the workflow in `.github/workflows/deploy.yml`. Every push to the default branch deploys it. It is also reachable at https://diha7172.github.io/Colorado-DBF/, which redirects to the domain once the domain is connected.
 
-**Connecting coloradodbf.org (repo owner, in this order):**
+**Connecting the domain (repo owner, in this order):**
 
-1. Register `coloradodbf.org` at any registrar (GoDaddy already holds coloradodbf.com, so keeping both in one account is simplest).
-2. In that registrar's DNS for coloradodbf.org, add:
+1. In GoDaddy (My Products, then DNS next to coloradodbf.com) delete the `www` CNAME that points to `ghs.googlehosted.com` and any Google Sites A records or forwarding rules, then add:
 
 | Type | Name | Value |
 | --- | --- | --- |
@@ -64,11 +63,9 @@ The site is hosted on GitHub Pages, straight from this repository, through the w
 | A | `@` | `185.199.110.153` |
 | A | `@` | `185.199.111.153` |
 
-3. Wait until `nslookup www.coloradodbf.org` answers with `diha7172.github.io` (usually under an hour).
-4. Only then, in the repo go to Settings, then Pages, enter `www.coloradodbf.org` under Custom domain and save. Add a file named `CNAME` to the repo root containing `www.coloradodbf.org`. Tick Enforce HTTPS once the certificate is ready.
+2. Wait until `nslookup www.coloradodbf.com` answers with `diha7172.github.io` instead of `ghs.googlehosted.com` (usually under an hour).
+3. Only then, in the repo go to Settings, then Pages, enter `www.coloradodbf.com` under Custom domain and save. When the DNS check is green, tick Enforce HTTPS (the certificate can take up to a day). The `CNAME` file in the repo root holds the same domain.
 
-Setting the domain in GitHub before DNS points at GitHub makes the `github.io` address redirect to whatever the domain currently serves, so do step 4 last.
-
-**The old .com.** coloradodbf.com stays on Google Sites until you decide to retire it. To send it to the new site later, in GoDaddy's DNS for the .com set up domain forwarding from `coloradodbf.com` and `www.coloradodbf.com` to `https://www.coloradodbf.org`.
+Setting the domain in GitHub before DNS points at GitHub makes the `github.io` address redirect to the old Google Site, so do step 3 last.
 
 **Moving to an organisation account later.** Transfer the repository to the organisation (Settings, then Danger Zone, then Transfer). GitHub keeps the Pages site and the custom domain, and the only DNS change is the `www` CNAME target, which becomes `<organisation>.github.io`.
