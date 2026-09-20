@@ -1,8 +1,9 @@
 name: Deploy site to GitHub Pages
 
+# The live site is hosted on Vercel (see README). This workflow is the GitHub Pages
+# alternative: enable Pages in Settings (Source: GitHub Actions), then run it from the
+# Actions tab or switch the trigger below back to "push".
 on:
-  push:
-    branches: [main, claude/eager-archimedes-ebgv5j]
   workflow_dispatch:
 
 permissions:
