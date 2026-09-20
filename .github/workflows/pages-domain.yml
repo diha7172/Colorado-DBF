@@ -1,0 +1,32 @@
+name: Set GitHub Pages custom domain
+
+# Run this from the Actions tab. Leave the domain empty to remove the custom
+# domain so the site serves at https://diha7172.github.io/Colorado-DBF/.
+# Enter www.coloradodbf.com once the DNS records in the README point at GitHub.
+on:
+  workflow_dispatch:
+    inputs:
+      domain:
+        description: "Custom domain, or leave empty to remove it"
+        required: false
+        default: ""
+
+permissions:
+  pages: write
+  contents: read
+
+jobs:
+  set-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update the Pages custom domain
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DOMAIN: ${{ inputs.domain }}
+        run: |
+          if [ -z "$DOMAIN" ]; then
+            echo '{"cname": null}' | gh api -X PUT "repos/${{ github.repository }}/pages" --input -
+          else
+            gh api -X PUT "repos/${{ github.repository }}/pages" -f cname="$DOMAIN"
+          fi
+          gh api "repos/${{ github.repository }}/pages" --jq '{cname, html_url, status, https_enforced}'
