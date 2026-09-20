@@ -64,7 +64,7 @@ The site is hosted on GitHub Pages, straight from this repository, through the w
 | A | `@` | `185.199.111.153` |
 
 2. Wait until `nslookup www.coloradodbf.com` answers with `diha7172.github.io` instead of `ghs.googlehosted.com` (usually under an hour).
-3. Only then, in the repo go to Settings, then Pages, enter `www.coloradodbf.com` under Custom domain and save. When the DNS check is green, tick Enforce HTTPS (the certificate can take up to a day). The `CNAME` file in the repo root holds the same domain.
+3. Only then, in the repo go to Settings, then Pages, enter `www.coloradodbf.com` under Custom domain and save. When the DNS check is green, tick Enforce HTTPS (the certificate can take up to a day). Then add a file named `CNAME` to the repo root containing `www.coloradodbf.com`; do not add it earlier, because the file itself attaches the domain and turns on the redirect.
 
 Setting the domain in GitHub before DNS points at GitHub makes the `github.io` address redirect to the old Google Site, so do step 3 last.
 
