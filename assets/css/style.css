@@ -162,7 +162,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav.is-hidden { transform: translateY(-100%); }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .nav__brand { display: flex; align-items: center; gap: 12px; }
-.nav__brand img { height: 44px; width: auto; }
+.nav__brand img { height: 36px; width: auto; }
 .nav__brand span { font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: 0.02em; }
 .nav__links { display: flex; align-items: center; gap: 4px; }
 .nav__links a {
@@ -439,6 +439,16 @@ body.has-cursor.cursor-media .cursor-ring::after { content: "Drag"; position: ab
 .person a { color: var(--gold); font-size: 13px; display: inline-block; margin-top: 6px; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
 .person a:hover { border-color: var(--gold); }
 
+/* org chart */
+.org { display: grid; gap: 12px; justify-items: center; }
+.org__row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.org__box { padding: 12px 18px; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--surface); font-family: var(--font-display); font-weight: 600; font-size: 15px; text-align: center; }
+.org__box small { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-top: 4px; font-weight: 400; }
+.org__box--top { border-color: var(--gold); }
+.org__line { width: 1px; height: 18px; background: var(--line-strong); }
+.person__meta { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+.person__meta b { display: inline; color: var(--text-2); font-weight: 500; margin: 0; font-size: 13px; }
+
 /* ---------- accordion / faq ---------- */
 .acc { border-top: 1px solid var(--line); }
 .acc__item { border-bottom: 1px solid var(--line); }
@@ -520,7 +530,7 @@ body.has-cursor.cursor-media .cursor-ring::after { content: "Drag"; position: ab
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
 @media (max-width: 860px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .footer__grid { grid-template-columns: 1fr; } }
-.footer__brand img { height: 128px; width: auto; margin-bottom: 18px; }
+.footer__brand img { height: 64px; width: auto; margin-bottom: 18px; }
 .footer__brand p { color: var(--muted); font-size: 14.5px; max-width: 36ch; }
 .footer h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 600; }
 .footer ul { display: grid; gap: 10px; }

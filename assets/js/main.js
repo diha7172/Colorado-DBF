@@ -65,7 +65,7 @@
   $$("[data-reveal], .stagger, .timeline__item").forEach(el => io.observe(el));
   // clipped frames: a fully clipped element never reports as visible, so watch its parent block instead
   const fio = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.querySelector(".media--reveal").classList.add("is-in"); fio.unobserve(e.target); } });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll(".media--reveal").forEach(m => m.classList.add("is-in")); fio.unobserve(e.target); } });
   }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
   $$(".media--reveal").forEach(el => fio.observe(el.parentElement));
 

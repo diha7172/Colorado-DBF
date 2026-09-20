@@ -46,22 +46,27 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-## Hosting and the custom domain
+## Hosting: GitHub Pages at www.coloradodbf.com
 
-The site is live on Vercel at **https://colorado-dbf-program-council.vercel.app**, deployed straight from this repository (Vercel project `colorado-dbf` on the Program Council team). The domains `www.coloradodbf.com` and `coloradodbf.com` are already attached to that project, so the only remaining step is DNS.
+The site is hosted on GitHub Pages, straight from this repository, through the workflow in `.github/workflows/deploy.yml`. Every push to the default branch deploys it.
 
-At the domain registrar (wherever coloradodbf.com is registered), replace the Google Sites records with:
+**One-time setup (repo owner, about a minute):**
+
+1. In the repo go to **Settings**, then **Pages**.
+2. Under "Build and deployment", set **Source** to **GitHub Actions**.
+3. Go to the **Actions** tab, open "Deploy site to GitHub Pages" and click **Run workflow** (or just push a commit). The site appears at `https://diha7172.github.io/Colorado-DBF/` within a minute or two.
+4. Back in Settings, then Pages, enter `www.coloradodbf.com` under **Custom domain** and save. Tick **Enforce HTTPS** once the certificate shows as ready (up to a day after DNS is set).
+
+**DNS at the registrar** (wherever coloradodbf.com is registered). Remove the Google Sites records for `www` and the root first, then add:
 
 | Type | Name | Value |
 | --- | --- | --- |
-| CNAME | `www` | `cname.vercel-dns.com` |
-| A | `@` | `76.76.21.21` |
+| CNAME | `www` | `diha7172.github.io` |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
 
-Once that propagates (minutes to a few hours), `www.coloradodbf.com` serves this site, `coloradodbf.com` redirects to it, and Vercel issues the HTTPS certificate on its own. The Vercel dashboard for the project shows a green check next to each domain when it is working.
+Once DNS propagates, `www.coloradodbf.com` and `coloradodbf.com` serve this site and the `github.io` address redirects to the domain. GitHub's guide: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
 
-**Redeploying after changes.** Vercel is not yet linked to GitHub for automatic deploys. Two ways to fix that, pick one:
-
-- Install the Vercel GitHub app on this repository (https://github.com/apps/vercel) and connect it to the `colorado-dbf` project. Every push to the default branch then deploys automatically.
-- Or run `npx vercel --prod` from the repo folder after logging in with `npx vercel login`.
-
-**GitHub Pages alternative.** The workflow in `.github/workflows/deploy.yml` can host the same site on GitHub Pages instead. Enable it once under Settings, then Pages, with Source set to **GitHub Actions**, run the workflow from the Actions tab, and set the custom domain there (the `CNAME` file in the repo holds `www.coloradodbf.com`). GitHub's DNS records differ from Vercel's: `www` as a CNAME to `diha7172.github.io`, and the four A records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`. Full guide: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
+**Moving to an organisation account later.** Transfer the repository to the organisation (Settings, then Danger Zone, then Transfer). GitHub keeps the Pages site and the custom domain setting, and the only DNS change is the `www` CNAME target, which becomes `<organisation>.github.io`.
