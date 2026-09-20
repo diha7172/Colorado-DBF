@@ -55,7 +55,7 @@ The site is hosted on GitHub Pages, straight from this repository, through the w
 1. In the repo go to **Settings**, then **Pages**.
 2. Under "Build and deployment", set **Source** to **GitHub Actions**.
 3. Go to the **Actions** tab, open "Deploy site to GitHub Pages" and click **Run workflow** (or just push a commit). The site appears at `https://diha7172.github.io/Colorado-DBF/` within a minute or two.
-4. Back in Settings, then Pages, enter `www.coloradodbf.com` under **Custom domain** and save. Tick **Enforce HTTPS** once the certificate shows as ready (up to a day after DNS is set).
+4. Only after the DNS records below are in place: back in Settings, then Pages, enter `www.coloradodbf.com` under **Custom domain** and save, and add a file named `CNAME` to the repo root containing `www.coloradodbf.com`. Tick **Enforce HTTPS** once the certificate shows as ready (up to a day after DNS is set). Setting the custom domain before DNS points at GitHub makes the `github.io` address redirect to the old site, which is why the `CNAME` file is not in the repo yet.
 
 **DNS at the registrar** (wherever coloradodbf.com is registered). Remove the Google Sites records for `www` and the root first, then add:
 
