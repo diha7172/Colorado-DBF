@@ -1,6 +1,6 @@
 # Colorado Design Build Fly website
 
-Source for [coloradodbf.com](https://www.coloradodbf.com), the site for the University of Colorado Boulder AIAA Design/Build/Fly team.
+Source for [coloradodbf.org](https://www.coloradodbf.org), the site for the University of Colorado Boulder AIAA Design/Build/Fly team.
 
 Plain HTML, CSS and JavaScript. No build step, no framework, nothing to install. Edit a file, push, and GitHub Pages redeploys it.
 
@@ -66,6 +66,8 @@ The domain `coloradodbf.org` is registered at Spaceship (spaceship.com) on the `
 | A | `@` | `185.199.111.153` | 30 min |
 
 2. Wait until `nslookup www.coloradodbf.org` answers with `diha7172.github.io` (usually under an hour).
-3. Only then, in the repo go to Settings, then Pages, enter `www.coloradodbf.org` under Custom domain and save. When the DNS check is green, tick Enforce HTTPS (the certificate can take from minutes to a day). Then add a file named `CNAME` to the repo root containing `www.coloradodbf.org`. Do not add the file earlier, because the file itself attaches the domain.
+3. Only then, in the repo go to Settings, then Pages, enter `www.coloradodbf.org` under Custom domain and save. When the DNS check is green, tick Enforce HTTPS.
+
+All of this is done. The `CNAME` file in the repo root holds the domain, so leave it in place; deleting it detaches the domain on the next deploy.
 
 **Moving to an organisation account later.** Transfer the repository to the organisation (Settings, then Danger Zone, then Transfer). GitHub keeps the Pages site and the custom domain, and the only DNS change is the `www` CNAME target, which becomes `<organisation>.github.io`.
