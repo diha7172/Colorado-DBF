@@ -73,12 +73,26 @@
   $$("[data-countdown]").forEach(el => {
     const start = new Date(el.dataset.countdown);
     const end = new Date(el.dataset.countdownEnd || el.dataset.countdown);
-    const now = new Date();
-    const days = Math.ceil((start - now) / 864e5);
-    const label = el.closest("div") && el.closest("div").querySelector("small");
-    if (days > 0) { el.dataset.count = String(days); el.textContent = "0"; }
-    else if (now <= end) { el.parentElement.textContent = "Now"; if (label) label.textContent = "Fly-off in progress"; }
-    else { el.parentElement.textContent = "Done"; if (label) label.textContent = "See you next season"; }
+    const units = el.querySelector(".countdown__units");
+    const label = el.querySelector(".countdown__label");
+    const cell = {}; ["d", "h", "m", "s"].forEach(k => { cell[k] = el.querySelector('[data-cd="' + k + '"]'); });
+    const pad = n => String(n).padStart(2, "0");
+    function tick() {
+      const now = new Date();
+      let left = start - now;
+      if (left <= 0) {
+        if (now <= end) { label.textContent = "Fly-off in progress · Tucson, Arizona"; units.innerHTML = "<div><b>Now</b><small>Follow along on Instagram</small></div>"; }
+        else { label.textContent = "The 2027 fly-off is done"; units.innerHTML = "<div><b>2028</b><small>See you next season</small></div>"; }
+        return;
+      }
+      const d = Math.floor(left / 864e5); left -= d * 864e5;
+      const h = Math.floor(left / 36e5); left -= h * 36e5;
+      const m = Math.floor(left / 6e4); left -= m * 6e4;
+      const s = Math.floor(left / 1e3);
+      cell.d.textContent = d; cell.h.textContent = pad(h); cell.m.textContent = pad(m); cell.s.textContent = pad(s);
+      setTimeout(tick, 1000 - (Date.now() % 1000));
+    }
+    tick();
   });
   function countUp(el) {
     const end = parseFloat(el.dataset.count);
