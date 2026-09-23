@@ -70,6 +70,16 @@
   $$(".media--reveal").forEach(el => fio.observe(el.parentElement));
 
   /* ---------- count-up numbers ---------- */
+  $$("[data-countdown]").forEach(el => {
+    const start = new Date(el.dataset.countdown);
+    const end = new Date(el.dataset.countdownEnd || el.dataset.countdown);
+    const now = new Date();
+    const days = Math.ceil((start - now) / 864e5);
+    const label = el.closest("div") && el.closest("div").querySelector("small");
+    if (days > 0) { el.dataset.count = String(days); el.textContent = "0"; }
+    else if (now <= end) { el.parentElement.textContent = "Now"; if (label) label.textContent = "Fly-off in progress"; }
+    else { el.parentElement.textContent = "Done"; if (label) label.textContent = "See you next season"; }
+  });
   function countUp(el) {
     const end = parseFloat(el.dataset.count);
     const dec = (el.dataset.count.split(".")[1] || "").length;
