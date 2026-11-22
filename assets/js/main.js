@@ -69,6 +69,9 @@
   }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
   $$(".media--reveal").forEach(el => fio.observe(el.parentElement));
 
+  /* ---------- time-limited banners: hidden once their data-until time passes ---------- */
+  $$("[data-until]").forEach(el => { if (new Date() >= new Date(el.dataset.until)) el.hidden = true; });
+
   /* ---------- count-up numbers ---------- */
   $$("[data-countdown]").forEach(el => {
     const start = new Date(el.dataset.countdown);

@@ -656,3 +656,4 @@ html.no-vt body { animation: vtIn 0.6s var(--ease-out); }
 @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(207, 184, 124, 0); } 100% { box-shadow: 0 0 0 0 rgba(207, 184, 124, 0); } }
 @media (prefers-reduced-motion: reduce) { .announce__dot { animation: none; } }
 @media (max-width: 600px) { .announce { font-size: 15px; padding: 12px 16px; border-radius: 16px; align-items: flex-start; } .announce__dot { margin-top: 6px; } .announce .arrow { margin-top: 2px; flex: none; } }
+.announce[hidden] { display: none; }
